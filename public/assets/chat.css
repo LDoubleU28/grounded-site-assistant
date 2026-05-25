@@ -1,0 +1,190 @@
+/* Grounded Site Assistant — widget styles. Self-contained, light theme. */
+#gsa-widget {
+  --gsa-bg: #ffffff;
+  --gsa-fg: #1a1a2e;
+  --gsa-muted: #6b7280;
+  --gsa-accent: #4f46e5;
+  --gsa-accent-fg: #ffffff;
+  --gsa-border: #e5e7eb;
+  --gsa-user: #eef2ff;
+  --gsa-bot: #f3f4f6;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* Launch button */
+#gsa-widget .gsa-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--gsa-accent);
+  color: var(--gsa-accent-fg);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+#gsa-widget .gsa-launch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(79, 70, 229, 0.42);
+}
+
+/* Panel */
+#gsa-widget .gsa-panel {
+  position: absolute;
+  right: 0;
+  bottom: 64px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--gsa-bg);
+  color: var(--gsa-fg);
+  border: 1px solid var(--gsa-border);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+#gsa-widget.gsa-open .gsa-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+#gsa-widget.gsa-open .gsa-launch {
+  opacity: 0.9;
+}
+
+/* Header */
+#gsa-widget .gsa-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gsa-border);
+  background: var(--gsa-accent);
+  color: var(--gsa-accent-fg);
+}
+#gsa-widget .gsa-header .gsa-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+#gsa-widget .gsa-header .gsa-sub {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* Log */
+#gsa-widget .gsa-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#gsa-widget .gsa-msg {
+  max-width: 85%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  word-wrap: break-word;
+}
+#gsa-widget .gsa-msg.gsa-user {
+  align-self: flex-end;
+  background: var(--gsa-user);
+  color: var(--gsa-fg);
+  border-bottom-right-radius: 4px;
+}
+#gsa-widget .gsa-msg.gsa-bot {
+  align-self: flex-start;
+  background: var(--gsa-bot);
+  color: var(--gsa-fg);
+  border-bottom-left-radius: 4px;
+}
+#gsa-widget .gsa-msg a {
+  color: var(--gsa-accent);
+}
+#gsa-widget .gsa-msg ul {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+#gsa-widget .gsa-dots {
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+/* Suggestions */
+#gsa-widget .gsa-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 14px 8px;
+}
+#gsa-widget .gsa-suggestion {
+  border: 1px solid var(--gsa-border);
+  background: var(--gsa-bg);
+  color: var(--gsa-fg);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.1s ease, border-color 0.1s ease;
+}
+#gsa-widget .gsa-suggestion:hover {
+  background: var(--gsa-user);
+  border-color: var(--gsa-accent);
+}
+
+/* Input form */
+#gsa-widget .gsa-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--gsa-border);
+}
+#gsa-widget .gsa-input {
+  flex: 1;
+  border: 1px solid var(--gsa-border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  color: var(--gsa-fg);
+}
+#gsa-widget .gsa-input:focus {
+  border-color: var(--gsa-accent);
+}
+#gsa-widget .gsa-send {
+  border: none;
+  background: var(--gsa-accent);
+  color: var(--gsa-accent-fg);
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#gsa-widget .gsa-send:hover {
+  filter: brightness(1.05);
+}
+
+/* Footer */
+#gsa-widget .gsa-footer {
+  padding: 8px 14px 12px;
+  font-size: 11px;
+  color: var(--gsa-muted);
+  text-align: center;
+}

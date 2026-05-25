@@ -1,0 +1,8 @@
+[build]
+  # The knowledge base (netlify/functions/lib/knowledge.mjs) is generated at
+  # build time from the files in content/. It is gitignored.
+  command = "python3 scripts/build_kb.py"
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"

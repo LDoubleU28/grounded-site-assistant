@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sam Rivera — Grounded Site Assistant (template)</title>
+    <link rel="stylesheet" href="/assets/chat.css" />
+    <style>
+      :root {
+        --ink: #1a1a2e;
+        --muted: #5b6172;
+        --accent: #4f46e5;
+        --bg: #fafafb;
+        --card: #ffffff;
+        --border: #e7e8ee;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 120px; }
+      .eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: #eef2ff;
+        padding: 4px 10px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+      h1 { font-size: 38px; line-height: 1.15; margin: 0 0 12px; }
+      .lede { font-size: 18px; color: var(--muted); margin: 0 0 36px; }
+      h2 { font-size: 20px; margin: 40px 0 12px; }
+      p { margin: 0 0 16px; }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px 22px;
+        margin: 24px 0;
+      }
+      code {
+        background: #f0f1f5;
+        padding: 2px 6px;
+        border-radius: 5px;
+        font-size: 13px;
+      }
+      .hint {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 56px;
+        padding-top: 20px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <span class="eyebrow">Template demo</span>
+      <h1>Sam Rivera</h1>
+      <p class="lede">
+        Software engineer building web applications and developer tools. This
+        page is sample content for the Grounded Site Assistant template.
+      </p>
+
+      <p>
+        Sam works across the stack with a focus on backend services, APIs, and
+        the tooling that keeps systems reliable. Recent interests include
+        serverless functions and retrieval-grounded assistants built with
+        minimal dependencies.
+      </p>
+
+      <h2>About this template</h2>
+      <p>
+        The chat bubble in the bottom-right corner is a reusable
+        <strong>"ask this site"</strong> assistant. It answers questions only
+        from this site's own content; the knowledge base is compiled from a
+        folder of markdown and YAML at build time, then handed to a serverless
+        function that grounds every answer in it.
+      </p>
+
+      <div class="card">
+        <p style="margin: 0 0 8px"><strong>How it works</strong></p>
+        <p class="hint" style="margin: 0">
+          Content in <code>content/</code> is compiled into the knowledge base
+          by <code>scripts/build_kb.py</code>. The function at
+          <code>/api/ask</code> calls Claude or OpenAI (auto-detected from the
+          configured API key) and is instructed to answer only from that
+          content, declining anything off-topic. Fork it, drop in your own
+          markdown, and deploy.
+        </p>
+      </div>
+
+      <p class="hint">
+        Sam Rivera is a fictional person used only to demonstrate the template.
+        No real personal data is included.
+      </p>
+
+      <footer>
+        Grounded Site Assistant — an open-source template. MIT licensed.
+      </footer>
+    </main>
+
+    <!-- Chat widget -->
+    <div id="gsa-widget">
+      <button class="gsa-launch" aria-label="Open chat">
+        <span aria-hidden="true">&#128172;</span> Ask about Sam
+      </button>
+      <section class="gsa-panel" role="dialog" aria-label="Site assistant">
+        <header class="gsa-header">
+          <div class="gsa-title">Ask about Sam</div>
+          <div class="gsa-sub">Answers grounded in this site's content</div>
+        </header>
+        <div class="gsa-log">
+          <div class="gsa-msg gsa-bot">
+            Hi! Ask me anything about Sam's work, projects, or background.
+          </div>
+        </div>
+        <div class="gsa-suggestions">
+          <button class="gsa-suggestion">What does Sam work on?</button>
+          <button class="gsa-suggestion">What are Sam's projects?</button>
+          <button class="gsa-suggestion">Is Sam available for work?</button>
+        </div>
+        <form class="gsa-form">
+          <input
+            class="gsa-input"
+            type="text"
+            placeholder="Ask a question…"
+            autocomplete="off"
+            aria-label="Your question"
+          />
+          <button class="gsa-send" type="submit">Send</button>
+        </form>
+        <div class="gsa-footer">Built on the Claude or OpenAI API</div>
+      </section>
+    </div>
+
+    <script src="/assets/chat.js"></script>
+  </body>
+</html>

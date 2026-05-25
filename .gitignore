@@ -1,0 +1,13 @@
+# Generated knowledge base (built from content/ at deploy time)
+netlify/functions/lib/knowledge.mjs
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Netlify
+.netlify/
+
+# OS
+.DS_Store
